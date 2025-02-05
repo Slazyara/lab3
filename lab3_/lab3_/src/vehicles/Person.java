@@ -1,0 +1,19 @@
+package vehicles;
+
+import body.Injury;
+
+public abstract class Person {
+    protected String name;
+
+    public Person(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+    public abstract int getHealth();
+
+    public void getInjured(Injury injury) {
+    }
+}
