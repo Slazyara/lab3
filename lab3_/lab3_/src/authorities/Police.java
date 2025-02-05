@@ -38,17 +38,15 @@ public class Police {
             System.out.println("Полицейский стреляет в " + target.getName());
             projectile.fly();
 
-            if (Math.random() < 0.99) {
+            if (Math.random() < 0.09) {
                 projectile.hitTarget(target);
                 target.getInjured(new Injury(injury.getBodyPart(),injury.getPain(), injury.getSeverity()));//isinjyred
             }else {
 
             }
 
-            //
         } else {
             throw new PoliceNoAmmoException();
-            //System.out.println("У полицейского закончились патроны.");
         }
         readyToShoot = false;
         isShooting = false;

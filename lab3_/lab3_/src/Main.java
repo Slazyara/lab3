@@ -23,6 +23,8 @@ public class Main {
         Rocket rocket = new Rocket(5);
         Leader znaika = new Leader("Знайка", Role.LEADER, new Clothing(ClothingType.SHIRT, ClothingColor.WHITE), maxHealth);
         Shorty klepka = new Shorty("Клепка", Role.REGULAR, new Clothing(ClothingType.JACKET,ClothingColor.BLACK), maxHealth);
+        Shorty fuxuy = new Shorty("Фуксия",Role.REGULAR, new Clothing(ClothingType.SHIRT,ClothingColor.BLUE), maxHealth);
+        Shorty seld = new Shorty("Селедочка", Role.REGULAR, new Clothing(ClothingType.SHIRT, ClothingColor.WHITE), maxHealth);
         Doctor pilulkin = new Doctor("Пилюлькин", Role.DOCTOR, new Clothing(ClothingType.SHIRT,ClothingColor.BLUE), maxHealth);
         Police police = new Police(1);
         RescueHelper rescueHelper = new RescueHelper(znaika);
@@ -52,6 +54,8 @@ public class Main {
             System.out.println(e.getMessage());
         }
         try {
+            fuxuy.enterRocket(rocket);
+            seld.enterRocket(rocket);
             znaika.enterRocket(rocket);
         } catch (FullRocketException e) {
             System.out.println(e.getMessage());

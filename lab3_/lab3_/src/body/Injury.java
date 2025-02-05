@@ -16,8 +16,11 @@ public class Injury {
         this.damage = severity == Severity.LIGHT ? 10 : severity == Severity.MEDIUM ? 30 : 50;
     }
 
-    public BodyPart getBodyPart(){return bodyPart;}
-    public WoundStatus getPain(){
+    public BodyPart getBodyPart() {
+        return bodyPart;
+    }
+
+    public WoundStatus getPain() {
         return pain;
     }
 
@@ -28,9 +31,27 @@ public class Injury {
     public int getDamage() {
         return damage;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Injury)) return false;
+        return ((this.damage == ((Injury) obj).damage))
+                & ((this.bodyPart == ((Injury) obj).bodyPart))
+                & ((this.pain == ((Injury) obj).pain))
+                & ((this.severity == ((Injury) obj).severity));
+
+    }
+
     @Override
     public String toString() {
-        return "Ранение в " + bodyPart.getName() + " (" + severity + "). " +
-                bodyPart.getDescription();
+        return "Рана" + damage + " " + bodyPart + " " + pain + " " + severity;
+    }
+
+    @Override
+    public int hashCode() {
+        return (Integer.valueOf(damage).hashCode()
+                + bodyPart.hashCode()
+                + pain.hashCode()
+                + severity.hashCode());
     }
 }
