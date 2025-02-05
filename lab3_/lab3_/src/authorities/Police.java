@@ -38,10 +38,11 @@ public class Police {
             System.out.println("Полицейский стреляет в " + target.getName());
             projectile.fly();
 
-            if (Math.random() < 0.01) {
+            if (Math.random() < 0.99) {
                 projectile.hitTarget(target);
+                target.getInjured(new Injury(injury.getBodyPart(),injury.getPain(), injury.getSeverity()));//isinjyred
             }else {
-                target.getInjured(new Injury(injury.getBodyPart(),injury.getPain(), injury.getSeverity()));
+
             }
 
             //

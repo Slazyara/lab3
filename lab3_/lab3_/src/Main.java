@@ -33,7 +33,6 @@ public class Main {
 
         try{
             police.shoot(klepka,bullet,new Injury(BodyPart.ARM, WoundStatus.BURNING, Severity.MEDIUM));
-            //klepka.getInjured(new Injury(BodyPart.ARM, WoundStatus.BURNING, Severity.MEDIUM));
 
         } catch (PoliceNoAmmoException e){
             System.out.println(e.getMessage());

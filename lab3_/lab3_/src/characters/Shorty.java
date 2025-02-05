@@ -84,9 +84,6 @@ public class Shorty extends Person {
     public Wound wound(){
         return wound;
 
-
-
-
     }
 
     public int getHealth() {

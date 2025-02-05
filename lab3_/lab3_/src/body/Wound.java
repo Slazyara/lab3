@@ -12,12 +12,23 @@ public class Wound {
     public Wound(BodyPart bodyPart, WoundStatus pain, Severity severity) {
         this.bodyPart = bodyPart;
         this.severity = severity;
+        this.pain = pain;
         this.isBleeding = true;
     }
 
     public void heal() {
         isBleeding = false;
         System.out.println("Рана на " + bodyPart.getName() + " зажила.");
+    }
+
+
+    public void reducePain(WoundStatus newPainLevel) {
+        if (newPainLevel.ordinal() < pain.ordinal()) { // Проверяем, что боль уменьшается
+            pain = newPainLevel;
+            System.out.println("Боль в " + bodyPart.getName() + " уменьшилась до " + pain);
+        } else {
+            System.out.println("Боль в " + bodyPart.getName() + " уже минимальна.");
+        }
     }
 
     public void worsen() {
