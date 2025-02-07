@@ -19,7 +19,7 @@ import weapons.Projectile;
 public class Main {
     public static void main(String[] args) {
         // Создание объектов
-        MaxHealth maxHealth = new MaxHealth(100);
+        MaxHealth maxHealth = new MaxHealth(19);
         Rocket rocket = new Rocket(5);
         Leader znaika = new Leader("Знайка", Role.LEADER, new Clothing(ClothingType.SHIRT, ClothingColor.WHITE), maxHealth);
         Shorty klepka = new Shorty("Клепка", Role.REGULAR, new Clothing(ClothingType.JACKET,ClothingColor.BLACK), maxHealth);
@@ -62,7 +62,6 @@ public class Main {
         }
         rocket.closeDoor();
         rocket.launch();
-
 
     }
 }

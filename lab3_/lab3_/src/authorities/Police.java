@@ -15,13 +15,11 @@ import java.util.Random;
 
 public class Police {
     private int ammo;
-    private boolean isShooting;
     private Shorty targetedShorty;
     private boolean readyToShoot;
 
     public Police(int ammo) {
         this.ammo = ammo;
-        this.isShooting = false;
         this.readyToShoot = false;
     }
 
@@ -33,14 +31,13 @@ public class Police {
     public void shoot(Person target, Projectile projectile,Injury injury) {
         if (!readyToShoot) return;
         if (ammo > 0) {
-            isShooting = true;
             ammo--;
             System.out.println("Полицейский стреляет в " + target.getName());
             projectile.fly();
 
-            if (Math.random() < 0.09) {
+            if (Math.random() < 0.67) {
                 projectile.hitTarget(target);
-                target.getInjured(new Injury(injury.getBodyPart(),injury.getPain(), injury.getSeverity()));//isinjyred
+                target.getInjured(new Injury(injury.getBodyPart(),injury.getPain(), injury.getSeverity()));
             }else {
 
             }
@@ -49,7 +46,6 @@ public class Police {
             throw new PoliceNoAmmoException();
         }
         readyToShoot = false;
-        isShooting = false;
     }
 
     public void triggerEvent(Event event) {
@@ -60,21 +56,19 @@ public class Police {
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Police)) return false;
-        return ((this.isShooting == ((Police) obj).isShooting))
-                & ((this.readyToShoot == ((Police) obj).readyToShoot))
+        return ( ((this.readyToShoot == ((Police) obj).readyToShoot))
                 & ((this.ammo == ((Police) obj).ammo))
-                & ((this.targetedShorty == ((Police) obj).targetedShorty));
+                & ((this.targetedShorty == ((Police) obj).targetedShorty)));
     }
 
     @Override
     public String toString(){
-        return "Полицейский" + isShooting + " " + readyToShoot + " " + ammo + " " + targetedShorty;
+        return "Полицейский"  + readyToShoot + " " + ammo + " " + targetedShorty;
     }
 
     @Override
     public int hashCode(){
-        return (Boolean.valueOf(isShooting).hashCode()
-                + Boolean.valueOf(readyToShoot).hashCode()
+        return ( Boolean.valueOf(readyToShoot).hashCode()
                 + Integer.valueOf(ammo).hashCode()
                 + targetedShorty.hashCode());
     }

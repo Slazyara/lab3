@@ -58,7 +58,8 @@ public class Shorty extends Person {
         clothing.addBloodStain();
         feelThePain(injury);
 
-        System.out.println(name + " получает " + injury);
+
+        System.out.println(name + " получает рана в " + injury.getBodyPart().getName() + ".Оставшееся здоровье: " + health);
     }
 
     public void reactToCommand(Command command) {
@@ -84,6 +85,11 @@ public class Shorty extends Person {
     public Wound wound(){
         return wound;
 
+    }
+
+    public void setHealth(int health) {
+        this.health = Math.max(0, health);
+        System.out.println(name + " здоровье установлено на " + this.health);
     }
 
     public int getHealth() {

@@ -26,6 +26,9 @@ public class Doctor extends Shorty {
         if (target.isInjured()) {
             isTreating = true;
             System.out.println(name + " начал лечить " + target.getName());
+            if (target.getHealth() <= 0 ){
+                medicalKit.heal(target);
+            }
             stopBleeding(target);
             applyBandage(target);
             isTreating = false;
@@ -59,12 +62,10 @@ public class Doctor extends Shorty {
 
         }
 
-        // Получаем данные о ране
         BodyPart bodyPart = target.wound().getBodyPart();
         Severity severity = target.wound().getSeverity();
         WoundStatus pain = target.wound().getPain();
 
-        // Выводим информацию о ране
         System.out.println(name + " оценил ранение у " + target.getName() + ":");
         System.out.println("- Рана на " + bodyPart.getName() + ".");
         System.out.println("- Тяжесть: " + severity);
